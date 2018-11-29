@@ -213,6 +213,9 @@ class App extends Component {
         }
       }
     } else {
+      d3.select(".seqView")
+        .select("svg")
+        .remove();
       $("#srch").css("display", "inline");
       this.setState({
         pats: this.state.previousStatePats,
