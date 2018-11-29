@@ -1,0 +1,13 @@
+{
+  "C_Cpp.intelliSenseEngineFallback": "Enabled",
+  "editor.formatOnSave": true,
+  "workbench.editor.showTabs": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "python.linting.pep8Enabled": true,
+  "python.linting.pylintPath": "${workspacefolder}/backedn/bin/pylint",
+  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
+  "python.linting.pylintEnabled": true,
+  "python.pythonPath": "‎⁨/Library/Frameworks⁩/Python.framework⁩/Versions⁩/3.7⁩/bin⁩/python3.7",
+  "python.venvPath": "${workspacefolder}/backedn/bin/python3",
+  "python.linting.pep8Args": ["--ignore=E501"]
+}

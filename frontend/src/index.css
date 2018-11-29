@@ -1,0 +1,189 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.menuLabels {
+  font-size: 10;
+  font-weight: "bold";
+  position: "relative";
+  top: 8;
+}
+
+.usersIcon {
+  position: relative;
+  left: 35px;
+}
+
+.usersIcon:hover {
+  color: grey;
+}
+
+.chkBx {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.chkBxLbl {
+  position: inherit;
+  right: 24px;
+  top: 3px;
+}
+
+.srchBarInput {
+  height: 50px;
+  width: 700px;
+  font-size: 10px;
+}
+
+.srchBarBtn {
+  height: 50px;
+  font-size: 10px;
+}
+
+.selectMenuLbl {
+  font-size: 10px;
+  font-weight: bold;
+  position: relative;
+  top: 8px;
+}
+
+.patternViewContainer {
+  float: left;
+  border-right: solid;
+  border-color: black;
+  border-width: 0.003in;
+  height: 1000px;
+  width: 850px;
+  position: relative;
+  overflow-y: auto;
+}
+
+#events {
+  position: relative;
+  height: 15px;
+  width: 60px;
+  left: 15px;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 0.003in;
+  border-color: black;
+  text-align: center;
+}
+
+.percentage {
+  position: relative;
+  text-align: center;
+  bottom: 20px;
+  margin-bottom: 50px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.eventname {
+  color: "black";
+  font-size: 10;
+  position: relative;
+  bottom: 60;
+}
+
+.styleFunnel {
+  height: 900px;
+  width: 50px;
+  position: relative;
+  left: 20px;
+}
+
+.seqView {
+  position: relative;
+  border-right: solid;
+  border-left: solid;
+  border-color: black;
+  border-width: 0.003in;
+  overflow: auto;
+  width: auto;
+  scroll-behavior: smooth;
+}
+
+.scroll {
+  float: left;
+  overflow: auto;
+  width: 550px;
+  scroll-behavior: smooth;
+}
+
+#events:hover {
+  opacity: 0.5;
+}
+
+.contextView {
+  float: left;
+  position: relative;
+  border-right: solid;
+  border-color: black;
+  border-width: 0.003in;
+  height: 1000px;
+  width: 90px;
+}
+
+.eventCategoryTable {
+  position: fixed;
+  left: 1200px;
+  width: 200px;
+  height: 300px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.003in;
+}
+
+.loader {
+  position: fixed;
+  top: 40%;
+  left: 40%;
+}
+
+.noDisplay {
+  display: none;
+}
+
+.newLoader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  position: relative;
+  top: 40%;
+  left: 40%;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+.reload {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+}
+
+.reload:hover {
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
