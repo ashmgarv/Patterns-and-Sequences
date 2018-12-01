@@ -1,4 +1,4 @@
-pip3 install npm
+apt-get install npm
 pip3 install django
 pip3 install djangorestframework
 pip3 install numpy
