@@ -24,12 +24,20 @@ class PatternView extends Component {
     onOver,
     onOut,
     getColor,
-    keyEvents
+    keyEvents,
+    bottomShift
   ) {
     $("#acd").addClass("newLoader");
-
+    var barThreshold = 0;
+    if (bottomShift === 300) {
+      barThreshold = 10;
+    } else barThreshold = 5;
     d3.select(".seqView")
       .selectAll("svg")
+      .remove();
+
+    d3.select(".barG")
+      .select("svg")
       .remove();
 
     var svg = d3
@@ -48,11 +56,58 @@ class PatternView extends Component {
     var ht = 0;
     var htMax = 0;
     var nWidth = 0;
+    var barSvg = d3
+      .select(".barG")
+      .append("svg")
+      .attr("height", 80)
+      .attr("width", nWidth);
 
+    var yScale = d3
+      .scaleLinear()
+      .domain([0, 10000])
+      .range([80, 0]);
+
+    barSvg.append("g").attr("transform", "translate(0," + 80 + ")");
+
+    barSvg
+      .append("g")
+      .attr("class", "yAxis")
+      .call(d3.axisLeft(yScale));
+
+    var tooldiv = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip");
     for (var i = 0; i < seqViewData.length - 1; i++) {
       ht = 0;
       var arr = seqViewData[i];
       var y = 0;
+
+      if (arr.length < barThreshold) {
+        var rectB = barSvg
+          .append("rect")
+          .attr("x", x)
+          .attr("y", yScale(6000))
+          .attr("width", 10)
+          .attr("height", 80 - yScale(6000))
+          .style("fill", "gray")
+          .attr("class", "rec")
+          .on("mouseover", onOver)
+          .on("mouseout", onOut);
+      } else {
+        var rectB = barSvg
+          .append("rect")
+          .attr("x", x)
+          .attr("y", yScale(3000))
+          .attr("width", 10)
+          .attr("height", 80 - yScale(3000))
+          .style("fill", "gray")
+          .attr("class", "rec")
+          .on("mouseover", onOver)
+          .on("mouseout", onOut);
+      }
+      // }
+
       for (var j = 0; j < arr.length - 1; j++) {
         var isKey = false;
         keyEvents.forEach(key => {
@@ -60,6 +115,7 @@ class PatternView extends Component {
         });
         ht += 10;
         var color = getColor(eventMaps, parseInt(arr[j]));
+        var ele_name = this.getEventName(eventMaps, parseInt(arr[j]));
         var rect = svg
           .append("rect")
           .attr("x", x)
@@ -68,8 +124,24 @@ class PatternView extends Component {
           .attr("height", 10)
           .style("fill", color)
           .attr("class", "rec")
-          .on("mouseover", onOver)
-          .on("mouseout", onOut);
+          .attr("name", ele_name)
+          .on("mouseover", function() {
+            d3.select(this)
+              .transition()
+              .duration(300)
+              .style("opacity", 0.8);
+            tooldiv
+              .transition()
+              .duration(300)
+              .style("opacity", 1);
+            tooldiv
+              .text(this.getAttribute("name"))
+              .style("left", d3.event.pageX + "px")
+              .style("top", d3.event.pageY - 30 + "px");
+          })
+          .on("mouseout", function() {
+            tooldiv.style("opacity", 0);
+          });
         if (isKey) {
           rect.attr("class", "isKey");
         }
@@ -77,12 +149,13 @@ class PatternView extends Component {
       }
       if (htMax < ht) {
         htMax = ht;
-        svg.attr("height", htMax);
+        svg.attr("height", htMax + 50);
       }
       x += 12;
       nWidth += 12;
       svg.attr("width", nWidth);
       svg.attr("width", nWidth + 20);
+      barSvg.attr("width", nWidth + 20);
     }
 
     $("#acd").removeClass("newLoader");
@@ -155,7 +228,8 @@ class PatternView extends Component {
                 this.onRectMouseOver,
                 this.onRectMouseOut,
                 this.getColor,
-                this.props.maps
+                this.props.maps,
+                this.props.bottomShift
               )
             }
           />
@@ -166,7 +240,7 @@ class PatternView extends Component {
                 id="events"
                 style={{
                   bottom:
-                    300 +
+                    this.props.bottomShift +
                     (Number.parseFloat(this.props.percentages[i]).toPrecision(
                       2
                     ) /

@@ -5,7 +5,7 @@ from reactdjango.settings import BASE_DIR
 from rest_framework.response import Response
 import subprocess
 import re
-import csv
+import json
 
 
 class MyModelListView(APIView):
@@ -14,6 +14,10 @@ class MyModelListView(APIView):
     def get(self, request, format=None):
         file1 = open(BASE_DIR + "/mymodel/api/Media/MSNBC.txt")
         sup_set = open(BASE_DIR + "/mymodel/api/Media/support_set.json")
+        print(type(sup_set))
+        file2 = open(BASE_DIR + "/mymodel/api/Media/support_set2.json")
+        dataset2 = json.load(file2)
+        print(type(dataset2))
         patterns = self.Vmsp()
         supp_set_idx = {i: [] for i in range(1, len(patterns) + 1)}
         max_patt_idx = 0
@@ -93,8 +97,12 @@ class MyModelListView(APIView):
                     if result:
                         count += 1
                 event_supp[seq_idx].append((count * 100) / total_number_seq)
+        pruned_patterns2 = dataset2["pruned_patterns"]
+        event_supp2 = dataset2["event_support"]
+        supp_set2 = dataset2["support_set"]
         final = {'pruned_patterns': final_patt,
-                 'event_support': event_supp, 'individual_support_sets': sup_set}
+                 'event_support': event_supp, 'individual_support_sets': sup_set,
+                 "pruned_patterns_2":pruned_patterns2, "event_support_2":event_supp2, "individual_support_set_2":supp_set2}
         return Response(final)
 
     def Vmsp(self):

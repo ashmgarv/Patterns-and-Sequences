@@ -8,8 +8,10 @@ const SelectMenu = props => {
             {menu.menuName === "Funnel" ? "" : menu.menuName}
           </label>
           <select
+            id="selMenu"
             style={{ fontSize: 10, height: 25 }}
             className="custom-select custom-select-sm col-sm-1 m-3"
+            onChange={props.datasetChanged}
           >
             <option selected>Select</option>
             {menu.items.map(item => (

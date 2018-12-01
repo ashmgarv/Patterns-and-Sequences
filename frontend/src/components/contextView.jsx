@@ -41,6 +41,7 @@ class ContextView extends Component {
                 eventMaps={this.props.EventMappings}
                 posLeft={map.id}
                 percentages={map.percentages}
+                bottomShift={this.props.bottomShift}
               />
             ))}
           </div>

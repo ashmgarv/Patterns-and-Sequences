@@ -5,7 +5,10 @@ import CheckBox from "./checkbox";
 const TopDiv = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <SelectMenu selectmenus={props.selectmenus} />
+      <SelectMenu
+        selectmenus={props.selectmenus}
+        datasetChanged={props.datasetChanged}
+      />
       <CheckBox CheckBoxName={props.CheckBoxName} />
       {props.pats.length !== 0 ? (
         <SearchBar

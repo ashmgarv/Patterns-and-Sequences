@@ -79,6 +79,7 @@ code {
   border-width: 0.003in;
   border-color: black;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .percentage {
@@ -114,7 +115,20 @@ code {
   width: auto;
   scroll-behavior: smooth;
 }
-
+.barG {
+  position: relative;
+  border-right: solid;
+  border-left: solid;
+  border-color: black;
+  border-width: 0.003in;
+  overflow: auto;
+  width: auto;
+  scroll-behavior: smooth;
+}
+.xAxis {
+  position: relative;
+  right: 200;
+}
 .scroll {
   float: left;
   overflow: auto;
@@ -135,7 +149,14 @@ code {
   height: 1000px;
   width: 90px;
 }
-
+#cv {
+  position: relative;
+  top: 30px;
+}
+.yAxis {
+  position: relative;
+  left: 30px;
+}
 .eventCategoryTable {
   position: fixed;
   left: 1200px;
@@ -186,4 +207,17 @@ code {
   100% {
     transform: rotate(360deg);
   }
+}
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
 }

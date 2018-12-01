@@ -4,6 +4,7 @@ class SequenceView extends Component {
   render() {
     return (
       <div className="scroll">
+        <div className="barG" />
         <div id="acd" className="seqView" />
       </div>
     );
