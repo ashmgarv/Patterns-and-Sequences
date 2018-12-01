@@ -396,6 +396,9 @@ class App extends Component {
           d3.select(".seqView")
             .select("svg")
             .remove();
+          d3.select(".barG")
+            .select("svg")
+            .remove();
           $("#srch").css("display", "none");
           $("#srch").val("");
           this.setState({
@@ -409,6 +412,9 @@ class App extends Component {
       }
     } else {
       d3.select(".seqView")
+        .select("svg")
+        .remove();
+      d3.select(".barG")
         .select("svg")
         .remove();
       $("#srch").css("display", "inline");
