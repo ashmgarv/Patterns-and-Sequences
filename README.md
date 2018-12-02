@@ -1,5 +1,4 @@
 # Patterns-and-Sequences
-CSE 572 Project
 
 *Please follow the steps in the order they appear*
 1. Open the terminal / its equivalent on your system.
